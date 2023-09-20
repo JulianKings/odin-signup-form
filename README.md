@@ -1,4 +1,4 @@
-# odin-signup-form
+# Odin Sign Up Form
 Example of a customized form made for The Odin Project.
 
 Names already in use: "Jhon", "Mark", "Lucy", "Nynaeve"

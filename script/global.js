@@ -1,3 +1,4 @@
+// basic declarations
 const inputs = document.querySelectorAll(".form-input-content input");
 const takenNames = ["Max", "Jhon", "Mark", "Lucy", "Nynaeve"];
 const takenMails = ["a@b.c", "yo@yo.com", "amazing@gmail.com", "taco@hotmail.es"];
@@ -9,6 +10,8 @@ const strengthThirdBar = document.querySelector("#thirdBar");
 const strengthFourthBar = document.querySelector("#fourthBar");
 const strengthCaption = document.querySelector(".form-input-password-strength-caption");
 const strengthDiv = document.querySelector(".form-input-password-strength");
+
+// password lock management
 const passwordLock = document.querySelector("#formPasswordLock");
 const passwordInput = document.querySelector("#password");
 let lockStatus = true;
@@ -19,6 +22,7 @@ inputs.forEach((input) => {
         onInputChange(event, input, input.parentElement.nextElementSibling);
     });
 
+    // password handler
     if(input.id === "password")
     {
         input.addEventListener('input', (event) => {
@@ -28,6 +32,7 @@ inputs.forEach((input) => {
             onFastInputChange(event, input, input.parentElement.nextElementSibling);
         }); // for IE8
 
+        // small handler for the password strength check
         input.addEventListener('focus', (event) => {
             if(strengthDiv.style["display"] !== "flex")
             {
@@ -61,6 +66,8 @@ passwordLock.addEventListener('click', (event) => {
     }
 });
 
+
+// Handlers
 function onFastInputChange(inputEvent, input, prevSibling)
 {
     let inputValue = inputEvent.target.value;
@@ -214,11 +221,7 @@ function onInputChange(inputEvent, input, prevSibling)
 
 }
 
-function getPrevParentSibling(child)
-{
-    child.parentElement;
-}
-
+// Strength check helpers
 function setWeakPassword()
 {
     strengthFirstBar.style["background-color"] = "#500000";
@@ -269,6 +272,7 @@ function setNeutralPassword()
     strengthCaption.style["color"] = "#868686";
 }
 
+// password lock helpers
 function cleanUpLock()
 {
     if(passwordLock.classList.contains("form-input-password-lock"))
