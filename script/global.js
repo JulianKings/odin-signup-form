@@ -77,8 +77,10 @@ function onFastInputChange(inputEvent, input, prevSibling)
         {
             input.classList.remove("error");
             prevSibling.textContent = "";
-            cleanUpLock();
         }
+
+        setNeutralPassword();
+        cleanUpLock();
     }    
 
     if(inputValue !== "" && inputValue !== undefined)
@@ -251,6 +253,16 @@ function setVeryStrongPassword()
     strengthFourthBar.style["background-color"] = "#007435";
     strengthCaption.textContent = "Very Strong";
     strengthCaption.style["color"] = "#007435";
+}
+
+function setNeutralPassword()
+{
+    strengthFirstBar.style["background-color"] = "#868686";
+    strengthSecondBar.style["background-color"] = "#868686";
+    strengthThirdBar.style["background-color"] = "#868686";
+    strengthFourthBar.style["background-color"] = "#868686";
+    strengthCaption.textContent = "Strength";
+    strengthCaption.style["color"] = "#868686";
 }
 
 function cleanUpLock()
