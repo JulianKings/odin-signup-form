@@ -16,16 +16,16 @@ let lockStatus = true;
 inputs.forEach((input) => {
     // register all Handlers
     input.addEventListener("change", (event) => {
-        onInputChange(event, input, input.parentElement.previousElementSibling);
+        onInputChange(event, input, input.parentElement.nextElementSibling);
     });
 
     if(input.id === "password")
     {
         input.addEventListener('input', (event) => {
-            onFastInputChange(event, input, input.parentElement.previousElementSibling);
+            onFastInputChange(event, input, input.parentElement.nextElementSibling);
         });
         input.addEventListener('propertychange', (event) => {
-            onFastInputChange(event, input, input.parentElement.previousElementSibling);
+            onFastInputChange(event, input, input.parentElement.nextElementSibling);
         }); // for IE8
 
         input.addEventListener('focus', (event) => {
