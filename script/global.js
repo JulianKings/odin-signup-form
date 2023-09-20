@@ -29,7 +29,6 @@ inputs.forEach((input) => {
         }); // for IE8
 
         input.addEventListener('focus', (event) => {
-            console.log("woot");
             if(strengthDiv.style["display"] !== "flex")
             {
                 strengthDiv.style["display"] = "flex";
@@ -38,7 +37,6 @@ inputs.forEach((input) => {
         });
 
         input.addEventListener('focusout', (event) => {
-            console.log("wooooot");
             if(strengthDiv.style["display"] !== "none")
             {
                 strengthDiv.style["display"] = "none";
@@ -55,6 +53,12 @@ passwordLock.addEventListener('click', (event) => {
     swapLock();
     lockStatus = !lockStatus;
     passwordInput.setAttribute("type", (lockStatus) ? "password" : "text");
+    
+    // refresh, since it lost focus on click
+    if(strengthDiv.style["display"] !== "flex")
+    {
+        strengthDiv.style["display"] = "flex";
+    }
 });
 
 function onFastInputChange(inputEvent, input, prevSibling)
