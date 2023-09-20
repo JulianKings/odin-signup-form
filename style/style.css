@@ -4,24 +4,50 @@
          url('./fonts/norse.woff2') format('woff2');
 }
 
+:root
+{
+    --content-size: 80vw;
+    --display-image-holder: flex;
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        --content-size: 100vw;
+        --display-image-holder: none;
+    }
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #e5e7eb;
     font-size: 1.1rem;
-    margin: 0;
-    padding: 0;
 }
 
 .content {
     display: flex;
-    width: 100%;
+    width: 100vw;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .image-holder {
-    width: 35%;
-    height: 100vh;
+    width: 35vw;
+    height: 100%;
+    min-height: 100%;
     background: url("../image/mountain.avif");
     position: relative;
+    display: var(--display-image-holder);
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .image-caption {
@@ -50,8 +76,7 @@ body {
 
 .image-credits {
     position: absolute;
-    bottom: 0;
-    padding-bottom: 0.8rem;
+    bottom: 0.8rem;
     padding-top: 0.8rem;
     width: 100%;
     font-size: 0.85rem;
@@ -64,8 +89,9 @@ body {
 }
 
 .content-holder {
-    width: 75%;
+    width: var(--content-size);
     display: flex;
+    flex-grow: 2;
     flex-direction: column;
     position: relative;
 }
@@ -82,6 +108,7 @@ body {
 }
 
 .form-holder {
+    width: 100%;
     background-color: #ffffff;
     color: #686868;
     padding: 1.5rem 2.5rem;
@@ -100,6 +127,8 @@ body {
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .form-input {
@@ -116,15 +145,26 @@ body {
     text-transform: uppercase;
 }
 
+.form-input-error
+{
+    font-size: 0.8rem;
+    padding: 0.1rem 0rem;
+    color: #500000;
+}
+
 .form-input-content {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-right: 0.8rem;
 }
 
 .form-input-content input {
     padding: 0.4rem 0.6rem;
     border: 1px solid rgb(0, 0, 0, 0.3);
     border-radius: 2px;
-    width: 90%;
+    width: 100%;
 }
 
 .form-input-content input:focus {
@@ -133,16 +173,156 @@ body {
     box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.form-input-content input:required + span::after {
-    position: absolute;
-    content: "REQUIRED";
-    background-color: #21282e;
-    color: #ffffff;
-    padding: 0.2rem;
-    font-size: 0.7rem;
-    right: 0.7rem;
-    top: 0.35rem;
-    border-radius: 4px;
+.form-input-content .valid {
+    border: 1px solid #007435;
+
+}
+
+.form-input-content .valid:focus {
+    border: 1px solid #007435;
+    outline: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.form-input-content .error {
+    border: 1px solid #500000;
+
+}
+
+.form-input-content .error:focus {
+    border: 1px solid #500000;
+    outline: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+@media (min-width: 750px) {
+    .form-input-content input:required
+    {
+        padding-right: 4.8rem;
+    }
+
+    .form-input-content input:required + span::before {
+        position: absolute;
+        content: "REQUIRED";
+        background-color: #21282e;
+        color: #ffffff;
+        padding: 0.2rem;
+        font-size: 0.7rem;
+        right: 1.1rem;
+        top: 0.35rem;
+        border-radius: 4px;
+    }
+
+    .form-input-content .error, .form-input-content .valid {
+        padding-right: 2rem;
+    }
+
+    .error + span::before {
+        position: absolute;
+        content: url("../image/alert-triangle.svg");
+        width: 15px;
+        height: 15px;
+        padding: 0.2rem;
+        padding-left: 4%;
+        font-size: 0.7rem;
+        right: 1.45rem;
+        top: 0rem;
+        border-radius: 4px;
+    }
+
+    .valid + span::before {
+        position: absolute;
+        content: url("../image/check.svg");
+        width: 20px;
+        height: 20px;
+        padding: 0.2rem;
+        padding-left: 4%;
+        font-size: 0.7rem;
+        right: 1.1rem;
+        top: 0.05rem;
+        border-radius: 4px;
+    }
+
+    .form-input-password-lock
+    {
+        position:absolute;
+        content: url("../image/eye.svg");
+        width: 24px;
+        height: 24px;
+        opacity: 0.6;
+        right: 1.1rem;
+        top: 0.2rem;
+        user-select: none
+    }
+
+    .form-input-password-lock-disabled
+    {
+        position:absolute;
+        content: url("../image/eye-off.svg");
+        width: 24px;
+        height: 24px;
+        opacity: 0.6;
+        right: 1.1rem;
+        top: 0.2rem;
+        user-select: none
+    }
+
+    .form-input-password-lock-2
+    {
+        position:absolute;
+        content: url("../image/eye.svg");
+        width: 24px;
+        height: 24px;
+        opacity: 0.6;
+        right: 2.8rem;
+        top: 0.2rem;
+        user-select: none
+    }
+
+    .form-input-password-lock-disabled-2
+    {
+        position:absolute;
+        content: url("../image/eye-off.svg");
+        width: 24px;
+        height: 24px;
+        opacity: 0.6;
+        right: 2.8rem;
+        top: 0.2rem;
+        user-select: none
+    }
+}
+
+.form-input-password-strength
+{
+    display: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.3rem;
+    margin-top: 0.1rem;
+    margin-left: 0.3rem;
+}
+
+.form-input-password-strength-meter
+{
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    width: min(75%, 11rem);
+    padding-top: 0.5rem;
+}
+
+.form-input-password-strength-bar {
+    width: 33%;
+    height: 0.15rem;
+    border-radius: 6px;
+    background-color: #868686;
+}
+
+.form-input-password-strength-caption
+{
+    font-size: 0.8rem;
+    padding: 0.1rem 0rem;
+    text-transform: uppercase;
 }
 
 .button-holder {
@@ -169,6 +349,7 @@ body {
 
 .login-holder {
     padding-left: 2.5rem;
+    padding-bottom: 3rem;
 }
 
 .login-holder a {
@@ -179,8 +360,7 @@ body {
 
 .footer {
     position: absolute;
-    bottom: 0;
-    padding-bottom: 0.8rem;
+    bottom: 0.8rem;
     width: 100%;
     text-align: center;
     font-size: 0.9rem;

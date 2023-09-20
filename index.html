@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin's Sign Up Form</title>
     <link rel="stylesheet" href="style/style.css">
-    <script href="script/global.js"></script>
+    <script type="text/javascript" src="script/global.js" defer></script>
 </head>
 <body>
     <div class="content">
@@ -27,31 +27,50 @@
                     <div class="form-title-holder">Let's do this!</div>
                     <div class="form-row">
                         <div class="form-input">
-                            <div class="form-input-label"><label for="firstName">First Name</label></div>
-                            <div class="form-input-content"><input type="text" id="firstName" name="user_name" required /><span></span></span></div>
+                            <div class="form-input-label"><label for="userName">User Name</label></div>
+                            <div class="form-input-error"></div>
+                            <div class="form-input-content"><input type="text" id="userName" name="user_name" minlength="3" maxlength="12" required /><span></span></span></div>
                         </div>
                         <div class="form-input">
                             <div class="form-input-label"><label for="lastName">Last Name</label></div>
+                            <div class="form-input-error"></div>
                             <div class="form-input-content"><input type="text" id="lastName" name="user_lastName" required /><span></span></div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-input">
                             <div class="form-input-label"><label for="email">Email</label></div>
+                            <div class="form-input-error"></div>
                             <div class="form-input-content"><input type="text" id="email" name="user_email" required /><span></span></div>
                         </div>
                         <div class="form-input">
                             <div class="form-input-label"><label for="phoneNumber">Phone Number</label></div>
-                            <div class="form-input-content"><input type="tel" id="phoneNumber" name="user_phone" /><span></span></div>
+                            <div class="form-input-error"></div>
+                            <div class="form-input-content"><input type="tel" id="phoneNumber" name="user_phone" maxlength="14" /><span></span></div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-input">
                             <div class="form-input-label"><label for="password">Password</label></div>
-                            <div class="form-input-content"><input type="password" id="password" name="user_password" required /><span></span></div>
+                            <div class="form-input-error"></div>
+                            <div class="form-input-content">
+                                <input type="password" id="password" name="user_password" required minlength="6" maxlength="32" />
+                                <span></span>
+                                <div id="formPasswordLock"></div>
+                            </div>
+                            <div class="form-input-password-strength">
+                                <div class="form-input-password-strength-meter">
+                                    <div class="form-input-password-strength-bar" id="firstBar"></div>
+                                    <div class="form-input-password-strength-bar" id="secondBar"></div>
+                                    <div class="form-input-password-strength-bar" id="thirdBar"></div>
+                                    <div class="form-input-password-strength-bar" id="fourthBar"></div>
+                                </div>
+                                <div class="form-input-password-strength-caption">Unknown</div>
+                            </div>
                         </div>
                         <div class="form-input">
                             <div class="form-input-label"><label for="confirmPassword">Confirm Password</label></div>
+                            <div class="form-input-error"></div>
                             <div class="form-input-content"><input type="password" id="confirmPassword" name="user_confirm-password" required /><span></span></div>
                         </div>
                     </div>
