@@ -88,6 +88,10 @@ body {
     color: #ececec;
 }
 
+.image-credits, .image-credits a:hover {
+    color: #c5c5c5;
+}
+
 .content-holder {
     width: var(--content-size);
     display: flex;
@@ -356,6 +360,10 @@ body {
     font-weight: bold;
     color: #222b32;
     text-decoration: none;
+}
+
+.login-holder a:hover {
+    color: #070a0c;
 }
 
 .footer {
